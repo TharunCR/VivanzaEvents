@@ -3,11 +3,11 @@
         <nav id="sidebar" class="bg-dark">
             <div class="sidebar-header bg-dark">
                 <h3><img src="../../assets/images/icons/user.png" class="mr-2" width="30" height="30">USER</h3>
-                
+
             </div>
 				<hr class="bg-info">
             <ul class="list-unstyled components">
-                
+
                 <li>
                     <a href="/userhome"><img src="../../assets/images/icons/dashboard.png" class="mr-2" width="30" height="30" >Dashboard</a>
                 </li>
@@ -41,5 +41,4 @@
             </ul>
         </nav>
 
-    
-    
+

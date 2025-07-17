@@ -4,17 +4,116 @@
 	<jsp:include page="includes/adminNav.jsp" />
 
 	<style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      color: #e0e0e0;
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1), 0 4px 8px rgba(255, 255, 255, 0.08);
       transition: 0.3s ease-in-out;
-      cursor:pointer;
-  }
+      cursor: pointer;
+      border: 1px solid #555;
+    }
+
+    .navbar {
+      background-color: #1e1e1e !important;
+      border-bottom: 1px solid #333;
+    }
+
+    .btn-info {
+      background-color: #333;
+      border-color: #444;
+      color: #fff;
+    }
+
+    .btn-info:hover {
+      background-color: #444;
+      border-color: #555;
+    }
+
+    .text-info {
+      color: #4fc3f7 !important;
+    }
+
+    .grey-bg {
+      background-color: #121212 !important;
+    }
+
+    h4, p {
+      color: #e0e0e0;
+    }
+
+    .success {
+      color: #81c784 !important;
+    }
+
+    .danger {
+      color: #e57373 !important;
+    }
+
+    .warning {
+      color: #ffb74d !important;
+    }
+
+    .primary {
+      color: #64b5f6 !important;
+    }
+
+    .secondary {
+      color: #ba68c8 !important;
+    }
+
+    .info {
+      color: #4dd0e1 !important;
+    }
+
+    .fa-users, .fa-concierge-bell, .fa-birthday-cake,
+    .fa-french-fries, .fa-user-hard-hat, .fa-calendar-check,
+    .fab, .fal, .fad {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+    }
+
+    .media-body span {
+      color: #b0b0b0;
+    }
+
+    /* Glow effect on hover for icons */
+    .card:hover .fa-users,
+    .card:hover .fa-concierge-bell,
+    .card:hover .fa-birthday-cake,
+    .card:hover .fa-french-fries,
+    .card:hover .fa-user-hard-hat,
+    .card:hover .fa-calendar-check,
+    .card:hover .fab,
+    .card:hover .fal,
+    .card:hover .fad {
+      filter: drop-shadow(0 0 8px currentColor);
+      transition: filter 0.3s ease;
+    }
+
+    /* Smooth fade-in for the whole page */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    body {
+      animation: fadeIn 0.5s ease-in;
+    }
     </style>
 	    <!-- Page Content  -->
         <div id="content">
 
-             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -131,7 +230,7 @@
                   <span>Total Vendors</span>
                 </div>
                 <div class="align-self-center">
-                  <i class="far fa-user-hard-hat fa-3x" style="color: orange;"></i>
+                  <i class="far fa-user-hard-hat fa-3x" style="color: #ffb74d;"></i>
                 </div>
               </div>
             </div>
@@ -212,11 +311,7 @@
 
 
     <div class="row">
-
-
-
-
-    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="col-xl-3 col-sm-6 col-12">
       <div class="card">
         <div class="card-content">
           <div class="card-body">
@@ -251,29 +346,9 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-  </div>
-
-
-  </div>
-
   </div>
 </section>
 </div>
-
-
-
-  </div>
-</div>
-</div>
-</div>
-
-
 
 <jsp:include page="includes/footer.jsp" />
 <%}%>

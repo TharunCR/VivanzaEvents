@@ -83,7 +83,7 @@
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('../assets/images/hotels/1.jpeg')">
         <div class="carousel-caption d-none d-md-block">
-          <h3>EXQUISITE</h3>
+          <h3>Vivanza</h3>
           <p class="text-white">The Perfect Planner</p>
         </div>
       </div>

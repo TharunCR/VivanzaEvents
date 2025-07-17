@@ -50,7 +50,7 @@ public class UserPDFExporter {
         parafont.setSize(10);
         parafont.setColor(Color.BLACK);
         
-        Paragraph title = new Paragraph("EXQUISITE BILL", titlefont);
+        Paragraph title = new Paragraph("Vivánzá Bill", titlefont);
         title.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(title);
        

@@ -1,19 +1,83 @@
-<%if (session.getAttribute("Admin_email") == null) {response.sendRedirect("/signin"); } else {%> 
+<%if (session.getAttribute("Admin_email") == null) {response.sendRedirect("/signin"); } else {%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-<jsp:include page="includes/header.jsp" />  
-	
-	<jsp:include page="includes/adminNav.jsp" />  
-	
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<jsp:include page="includes/header.jsp" />
+
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .table {
+        color: #e0e0e0;
+    }
+    .table thead th {
+        background-color: #1e1e1e;
+        border-color: #444;
+    }
+    .table tbody tr {
+        background-color: #1e1e1e;
+    }
+    .table tbody tr:hover {
+        background-color: #2d2d2d;
+    }
+    .form-control {
+        background-color: #2d2d2d;
+        border-color: #444;
+        color: #ffffff;
+    }
+    .form-control:focus {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        border-color: #007bff;
+    }
+    .page-link {
+        background-color: #2d2d2d;
+        border-color: #444;
+        color: #ffffff;
+    }
+    .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .modal-content {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+    .close {
+        color: #ffffff;
+    }
+    .bg-light {
+        background-color: #1e1e1e !important;
+    }
+    .btn-info {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    select option {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+</style>
+
+	<jsp:include page="includes/adminNav.jsp" />
+
 	    <!-- Page Content  -->
         <div id="content">
 
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1e1e1e;">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-dark" style="background-color: #2d2d2d; border-color: #444;">
                         <i class="fas fa-align-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
@@ -21,30 +85,28 @@
                     	<h3 class="text-info">USER DETAILS</h3>
                     </div>
                    <div>
-                    	<p>Welcome 
-                    	<% if(session.getAttribute("Admin_gender").equals("male")){ %> 
+                    	<p style="color: #b0b0b0;">Welcome
+                    	<% if(session.getAttribute("Admin_gender").equals("male")){ %>
                     		Mr.
-                    	<%}else{%> 
+                    	<%}else{%>
                     		Miss.
-                    	<%}%> 
+                    	<%}%>
                     	<span class="font-weight-bold text-info">${Admin_firstname} ${Admin_lastname}</span></p>
                     </div>
                 </div>
             </nav>
 
         <div>
-        
+
     <div class="d-flex justify-content-between">
 
-       
-		
 		<form class="d-flex"  action="/adminuserSearch"  method="post" autocomplete="off">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			
+
 			<input class="form-control" type="search" name="valueToSearch" placeholder="Value To Search" aria-label="Search" value="${user_keyword}">
             <button class="btn ml-2 btn-info" type="submit" name="search">Search</button>
         </form>
-        
+
          <form class="d-flex">
             <button type="button" class="btn btn-info ml-2" name="add_user" data-toggle="modal" data-target="#AdduserModal" data-whatever="@mdo">Add User</button>
         </form>
@@ -60,7 +122,7 @@
             </div>
             <form action="/adduserForm" modelAttribute="registerForm" method="POST">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		
+
                 <div class="modal-body">
 
                     <div class="form-group">
@@ -117,13 +179,11 @@
             </div>
         </div>
         </div>
-
-
     </div>
 <br/><br/>
 
 		<label class="text-info font-weight-bold"> Select No.of.rows to display :</label>
-		  <select class  ="form-control" name="state" id="maxRows">
+		  <select class="form-control" name="state" id="maxRows" style="width: auto; display: inline-block;">
 				<option value="5000">Show ALL Rows</option>
 				<option value="5">5</option>
 				<option value="10">10</option>
@@ -134,12 +194,11 @@
 				<option value="100">100</option>
 		    </select>
 
-	
+
 		    <div class="table-responsive">
 		        <table class="content-table table" id="table-id">
 		            <thead>
 		                <tr>
-		                    
 		                    <th>FIRST_NAME</th>
 		                    <th>LAST_NAME</th>
 		                    <th>EMAIL_ID</th>
@@ -168,10 +227,9 @@
 					            </tr>
 		        			</c:forEach>
 		                </tbody>
-		                    
-		                </table> 
+		                </table>
 		            </div>
-		            
+
 		              <div class='pagination-container mt-2'>
 		            <nav>
 		                <ul class="pagination">
@@ -181,13 +239,11 @@
 		                </ul>
 		            </nav>
 		        </div>
-		        
+
 		        </div>
 		        </div>
 		    </div>
 
-
-	
 			 <!-- Edit User modal -->
 			 <div class="modal fade" id="EdituserModal" tabindex="-1" role="dialog" aria-labelledby="AdduserModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -202,7 +258,7 @@
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<input type="hidden" name="id" id="User_id">
 						<div class="modal-body">
-		
+
 							<div class="modal-body">
 
 								<div class="form-group">
@@ -254,33 +310,35 @@
 				</div>
 				</div>
 
-		
-	<script type="text/javascript">
-        $(document).ready(function() {
-            $('table .edit').click(function ()
-            {
-				var id=$(this).parent().find('#edit_id').val();
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table .edit').click(function ()
+        {
+            var id=$(this).parent().find('#edit_id').val();
 
-				console.log(id)
-                $.ajax({
-                    type: "GET",
-                    url: "${pageContext.request.contextPath}/userfind/"+id, //this is my servlet
-                    data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
-                    success: function(user){      
-                            $('#EdituserModal #User_id').val(user.id);
-							$('#EdituserModal #FirstName').val(user.firstName);
-							$('#EdituserModal #LastName').val(user.lastName);
-							$('#EdituserModal #email').val(user.email);
-							$('#EdituserModal #contactno').val(user.contactno);
-							$('#EdituserModal #Address').val(user.address);
-							$('#EdituserModal #gender').val(user.gender);
-							$('#EdituserModal #role').val(user.role);
-                    }
-                });
+            console.log(id)
+            $.ajax({
+                type: "GET",
+                url: "${pageContext.request.contextPath}/userfind/"+id, //this is my servlet
+                data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
+                success: function(user){
+                        $('#EdituserModal #User_id').val(user.id);
+                        $('#EdituserModal #FirstName').val(user.firstName);
+                        $('#EdituserModal #LastName').val(user.lastName);
+                        $('#EdituserModal #email').val(user.email);
+                        $('#EdituserModal #contactno').val(user.contactno);
+                        $('#EdituserModal #Address').val(user.address);
+                        $('#EdituserModal #gender').val(user.gender);
+                        $('#EdituserModal #role').val(user.role);
+                }
             });
-
         });
-    </script>
-    <jsp:include page="includes/footer.jsp" />  
-    <%}%>
-    
+    });
+
+    function deleteUser() {
+        return confirm("Are you sure you want to delete this user?");
+    }
+</script>
+
+<jsp:include page="includes/footer.jsp" />
+<%}%>

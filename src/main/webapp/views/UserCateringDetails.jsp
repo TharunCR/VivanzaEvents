@@ -6,41 +6,44 @@
 <jsp:include page="includes/header.jsp" />
     <style>
         :root {
-            --black: #000000;
-            --dark-grey: #222222;
-            --medium-grey: #444444;
-            --light-grey: #888888;
-            --lighter-grey: #cccccc;
-            --lightest-grey: #eeeeee;
-            --white: #ffffff;
+            --black: #121212;
+            --dark-grey: #1e1e1e;
+            --medium-grey: #2d2d2d;
+            --light-grey: #3d3d3d;
+            --lighter-grey: #4d4d4d;
+            --lightest-grey: #5e5e5e;
+            --white: #e0e0e0;
+            --accent: #bb86fc;
         }
 
         body {
-            background-color: var(--lightest-grey);
-            color: var(--dark-grey);
+            background-color: var(--black);
+            color: var(--white);
             font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         .card {
             border: none;
-            border-radius: 0;
+            border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            background: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            background: var(--dark-grey);
             overflow: hidden;
             height: 100%;
+            border: 1px solid var(--light-grey);
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border-color: var(--accent);
         }
 
         .card-img-top {
             height: 250px;
             width: 100%;
             object-fit: cover;
-            border-bottom: 1px solid var(--lighter-grey);
+            border-bottom: 1px solid var(--light-grey);
         }
 
         .card-body {
@@ -52,12 +55,12 @@
         .card-title {
             font-weight: 600;
             letter-spacing: 0.5px;
-            color: var(--black);
+            color: var(--white);
             margin-bottom: 1rem;
         }
 
         .card-text {
-            color: var(--medium-grey);
+            color: var(--lighter-grey);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -67,39 +70,42 @@
         }
 
         .price sup {
-            color: var(--light-grey);
+            color: var(--lightest-grey);
             font-size: 0.9rem;
         }
 
         .price .number {
-            color: var(--black);
+            color: var(--white);
             font-weight: 700;
         }
 
         .price sub {
-            color: var(--light-grey);
+            color: var(--lightest-grey);
             font-size: 0.8rem;
         }
 
         .btn-dark {
-            background-color: var(--black);
-            border-color: var(--black);
-            border-radius: 0;
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--black);
+            border-radius: 4px;
             padding: 0.75rem 2rem;
             letter-spacing: 1px;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
             transition: all 0.3s;
         }
 
         .btn-dark:hover {
-            background-color: var(--dark-grey);
+            background-color: var(--white);
             transform: translateY(-2px);
+            color: var(--black);
         }
 
         .bg-gray-900 {
             background-color: var(--black) !important;
+            border-bottom: 1px solid var(--light-grey);
         }
 
         .text-gray-300 {
@@ -107,29 +113,29 @@
         }
 
         .text-gray-800 {
-            color: var(--dark-grey) !important;
+            color: var(--white) !important;
         }
 
         .text-gray-600 {
-            color: var(--medium-grey) !important;
-        }
-
-        .text-gray-900 {
-            color: var(--black) !important;
-        }
-
-        .text-gray-500 {
             color: var(--light-grey) !important;
         }
 
+        .text-gray-900 {
+            color: var(--white) !important;
+        }
+
+        .text-gray-500 {
+            color: var(--lightest-grey) !important;
+        }
+
         .album {
-            background-color: var(--lightest-grey) !important;
+            background-color: var(--black) !important;
             padding: 3rem 0;
         }
 
         .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--light-grey);
         }
 
         /* Animation */
@@ -164,6 +170,21 @@
             .card-body {
                 padding: 1.25rem;
             }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-grey);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--lighter-grey);
         }
     </style>
     <jsp:include page="includes/userNav.jsp" />

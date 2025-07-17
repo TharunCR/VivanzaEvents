@@ -134,7 +134,7 @@ public class UserController {
 			}
 			else {
 				userservice.save(user);
-				String body = "Hello "+Fullname+"\n Welcome to EXQUISITE \n Thank you for Registration!!! \n Remember your EmailId and Password \n  Emailid : "+email+" \n Password : "+password;
+				String body = "Hello "+Fullname+"\n Welcome to Vivánzá \n Thank you for Registration!!! \n Remember your EmailId and Password \n  Emailid : "+email+" \n Password : "+password;
 				twillioService.sendSms(to, from, body);
 				
 //				System.out.println("Success");
@@ -503,7 +503,7 @@ public class UserController {
 		    MimeMessage msg = mailSender.createMimeMessage();              
 		    MimeMessageHelper helper = new MimeMessageHelper(msg);
 		     
-		    helper.setFrom("ganapathydaprojects@gmail.com", "EXQUISITE");
+		    helper.setFrom("crtharunjune@gmail.com", "Vivánzá");
 		    helper.setTo(recipientEmail);
 		     
 		    String subject = "Here's the link to reset your password";

@@ -170,7 +170,7 @@ public class GeneralController {
 
 			User adminUser = userservice.findByRole("Admin");
 
-			helper.setFrom(email, "EXQUISITE");
+			helper.setFrom(email, "Vivánzá");
 			helper.setTo(adminUser.getEmail());
 			helper.setSubject("User Query");
 

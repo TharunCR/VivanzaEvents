@@ -1,66 +1,107 @@
-<%if (session.getAttribute("Admin_email") == null) {response.sendRedirect("/signin"); } else {%> 
+<%if (session.getAttribute("Admin_email") == null) {response.sendRedirect("/signin"); } else {%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<jsp:include page="includes/header.jsp" />  
-	
-<jsp:include page="includes/adminNav.jsp" />  
+<jsp:include page="includes/header.jsp" />
 
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .table {
+        color: #e0e0e0;
+    }
+    .table thead th {
+        background-color: #1e1e1e;
+        border-color: #444;
+    }
+    .table tbody tr {
+        background-color: #2d2d2d;
+    }
+    .table tbody tr:hover {
+        background-color: #3a3a3a;
+    }
+    .modal-content {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
+    .form-control, .form-control:focus {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #444;
+    }
+    .page-link {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #444;
+    }
+    .page-item.active .page-link {
+        background-color: #3a3a3a;
+        border-color: #555;
+    }
+    .btn-info {
+        background-color: #0066cc;
+        border-color: #0055aa;
+    }
+    .btn-danger {
+        background-color: #cc0000;
+        border-color: #aa0000;
+    }
+</style>
+
+<jsp:include page="includes/adminNav.jsp" />
 
     <!-- Page Content  -->
-    <div id="content">
+    <div id="content" style="background-color: #121212; min-height: 100vh;">
 
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1e1e1e;">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-dark" style="background-color: #2d2d2d; border-color: #444;">
                         <i class="fas fa-align-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
                     <div>
-                    	<h3 class="text-info">HOTEL DETAILS</h3>
+                    	<h3 class="text-white">HOTEL DETAILS</h3>
                     </div>
                    <div>
-                    	<p>Welcome 
-                    	<% if(session.getAttribute("Admin_gender").equals("male")){ %> 
+                    	<p style="color: #b0b0b0;">Welcome
+                    	<% if(session.getAttribute("Admin_gender").equals("male")){ %>
                     		Mr.
-                    	<%}else{%> 
+                    	<%}else{%>
                     		Miss.
-                    	<%}%> 
-                    	<span class="font-weight-bold text-info">${Admin_firstname} ${Admin_lastname}</span></p>
+                    	<%}%>
+                    	<span class="font-weight-bold text-white">${Admin_firstname} ${Admin_lastname}</span></p>
                     </div>
                 </div>
             </nav>
 
-   <div>
-      
-<div class="d-flex justify-content-between">
-    
-   <form class="d-flex"  action="/adminhotelSearch"  method="post" autocomplete="off">
+   <div class="container-fluid p-4">
+
+<div class="d-flex justify-content-between mb-4">
+
+   <form class="d-flex" action="/adminhotelSearch" method="post" autocomplete="off">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		
-			<input class="form-control" type="search" name="valueToSearch" placeholder="Value To Search" aria-label="Search" value="${hotel_keyword}">
-            <button class="btn ml-2 btn-info" type="submit" name="search">Search</button>
+			<input class="form-control" style="background-color: #2d2d2d; color: #e0e0e0; border-color: #444;" type="search" name="valueToSearch" placeholder="Value To Search" aria-label="Search" value="${hotel_keyword}">
+            <button class="btn ml-2 btn-dark" style="background-color: #3a3a3a; border-color: #444;" type="submit" name="search">Search</button>
         </form>
 
-
     <form class="d-flex">
-        <button type="button" class="btn btn-info ml-2" name="add_hotel" data-toggle="modal" data-target="#AddhotelModal" data-whatever="@mdo">Add Hotel</button>
+        <button type="button" class="btn btn-dark ml-2" style="background-color: #3a3a3a; border-color: #444;" name="add_hotel" data-toggle="modal" data-target="#AddhotelModal" data-whatever="@mdo">Add Hotel</button>
     </form>
-
-
 
      <!-- Add User modal -->
      <div class="modal fade" id="AddhotelModal" tabindex="-1" role="dialog" aria-labelledby="AdduserModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Hotel</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-header" style="border-color: #444;">
+                <h5 class="modal-title text-white">Add Hotel</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/addhotelForm" modelAttribute="hotelForm"  method="POST" enctype= "multipart/form-data">
+            <form action="/addhotelForm" modelAttribute="hotelForm" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<input type="hidden" name="subadmin" value="not"/>
 				<input type="hidden" name="superadmin" value="not"/>
@@ -80,17 +121,17 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Hotel Price:</label>
-						<input  class="form-control"  type="text" name="price"  placeholder="Hotel Price" id="price" required>
+						<input class="form-control" type="text" name="price" placeholder="Hotel Price" id="price" required>
                     </div>
-                   
+
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Hotel Location:</label>
 						<textarea class="form-control" name="location" placeholder="Hotel Location" id="location"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="border-color: #444;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info" name="addhotel" >Add Hotel</button>
+                    <button type="submit" class="btn btn-info" name="addhotel">Add Hotel</button>
                 </div>
             </form>
             </div>
@@ -99,10 +140,9 @@
 
 </div>
 
-<br />
 <br/>
-    <label class="text-info font-weight-bold"> Select No.of.rows to display :</label>
-      <select class  ="form-control" name="state" id="maxRows">
+    <label class="text-white font-weight-bold"> Select No.of.rows to display :</label>
+      <select class="form-control" style="background-color: #2d2d2d; color: #e0e0e0; border-color: #444;" name="state" id="maxRows">
             <option value="5000">Show ALL Rows</option>
             <option value="5">5</option>
             <option value="10">10</option>
@@ -114,7 +154,7 @@
         </select>
 
 
-        <div class="table-responsive">
+        <div class="table-responsive mt-4">
             <table class="content-table table" id="table-id">
                 <thead>
                     <tr>
@@ -131,7 +171,7 @@
 			            <tr>
 			            <td>${allhotel.hotelName}</td>
 			            <td>${fn:substring(allhotel.hotelDesc, 0, 100)}...  </td>
-			           <td ><img src="data:image/jpeg;base64,${allhotel.hotelImg1}" class="rounded-circle" width="100" height="100"/></td>
+			           <td><img src="data:image/jpeg;base64,${allhotel.hotelImg1}" class="rounded-circle" width="100" height="100"/></td>
 			            <td>${allhotel.price}</td>
 			            <td>${allhotel.location}</td>
                         <td class="d-flex">
@@ -142,11 +182,10 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-                    
-                </table> 
+                </table>
             </div>
-            
-              <div class='pagination-container mt-2'>
+
+              <div class='pagination-container mt-4'>
             <nav>
                 <ul class="pagination">
                    <li class="page-item" style="cursor:pointer;" data-page="prev" ><span class="page-link"> < <span class="sr-only">(current)</span></span></li>
@@ -155,28 +194,28 @@
                 </ul>
             </nav>
         </div>
-        
+
         </div>
         </div>
     </div>
-    
+
      <!-- Edit User modal -->
 			 <div class="modal fade" id="EdithotelModal" tabindex="-1" role="dialog" aria-labelledby="AdduserModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<div class="modal-header" style="border-color: #444;">
+						<h5 class="modal-title text-white">Edit Hotel</h5>
+						<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="/EdithotelForm" modelAttribute="hotelEditForm" method="POST" enctype= "multipart/form-data">
+					<form action="/EdithotelForm" modelAttribute="hotelEditForm" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<input type="hidden" name="subadmin" value="not"/>
 							<input type="hidden" name="superadmin" value="not"/>
 						<input type="hidden" name="id" id="hotel_id">
 						<div class="modal-body">
-		
+
 							<div class="modal-body">
 
 								<div class="form-group">
@@ -189,7 +228,7 @@
 								</div>
 								<div class="form-group">
 									<label for="message-text" class="col-form-label">Hotel price:</label>
-									<input type="text" class="form-control"  placeholder="hotel price Id" name="price" id="price1" required>
+									<input type="text" class="form-control" placeholder="hotel price Id" name="price" id="price1" required>
 								</div>
 								<div class="form-group">
 									<label for="message-text" class="col-form-label">Address:</label>
@@ -197,44 +236,48 @@
 								</div>
 								<div class="form-group">
                        			 <label for="message-text" class="col-form-label">Hotel Image:</label>
-                     		   <input type="file" class="form-control" name="hotelImg1" id="hotelImg11" >
+                     		   <input type="file" class="form-control" name="hotelImg1" id="hotelImg11">
                   			  </div>
 							</div>
 						</div>
-						<div class="modal-footer">
+						<div class="modal-footer" style="border-color: #444;">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-info" name="EditHotel" >Edit Hotel</button>
+							<button type="submit" class="btn btn-info" name="EditHotel">Edit Hotel</button>
 						</div>
 					</form>
 					</div>
 				</div>
 				</div>
-				
-				
-	<script type="text/javascript">
-        $(document).ready(function() {
-            $('table .edit').click(function ()
-            {
-				var id=$(this).parent().find('#edit_id').val();
 
-				console.log(id)
-                $.ajax({
-                    type: "GET",
-                    url: "${pageContext.request.contextPath}/hotelfind/"+id, //this is my servlet
-                    data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
-                    success: function(allhotel){ 
-                    		$('#EdithotelModal #hotel_id').val(allhotel.id);
-                            $('#EdithotelModal #hotelName1').val(allhotel.hotelName);
-							$('#EdithotelModal #hotelDesc1').val(allhotel.hotelDesc);
-							$('#EdithotelModal #location1').val(allhotel.location);
-							$('#EdithotelModal #price1').val(allhotel.price);
-							$('#EdithotelModal #hotelImg11').val(allhotel.hotelImg1);
-							
-                    }
-                });
+<script>
+    function deleteHotel() {
+        return confirm("Are you sure you want to delete this hotel?");
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table .edit').click(function ()
+        {
+			var id=$(this).parent().find('#edit_id').val();
+
+			console.log(id)
+            $.ajax({
+                type: "GET",
+                url: "${pageContext.request.contextPath}/hotelfind/"+id, //this is my servlet
+                data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
+                success: function(allhotel){
+                		$('#EdithotelModal #hotel_id').val(allhotel.id);
+                        $('#EdithotelModal #hotelName1').val(allhotel.hotelName);
+						$('#EdithotelModal #hotelDesc1').val(allhotel.hotelDesc);
+						$('#EdithotelModal #location1').val(allhotel.location);
+						$('#EdithotelModal #price1').val(allhotel.price);
+						$('#EdithotelModal #hotelImg11').val(allhotel.hotelImg1);
+                }
             });
-
         });
-    </script>
-<jsp:include page="includes/footer.jsp" />  
+    });
+</script>
+
+<jsp:include page="includes/footer.jsp" />
 <%}%>
