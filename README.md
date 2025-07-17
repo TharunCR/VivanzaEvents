@@ -1,87 +1,91 @@
-# 🎉 Event Management System
+Event Management System – Project Overview
+Technologies Used:
+Java 17 (Java SE)
 
-An all-in-one Event Management Web Application built with a robust **user–admin** structure.
+Java Swing (GUI Framework)
 
-- ✅ **Users** can register, login, and book event halls.
-- 🛠 **Admins** have full control over users, vendors, bookings, and events.
+JDBC (Java Database Connectivity)
 
----
+MySQL (Relational Database)
 
-## 🚀 Features
+Git & GitHub (Version Control)
 
-### 👤 User Features:
-- Register and login with secure authentication
-- View available events and vendors
-- Book event halls or services
-- Manage personal bookings
-- Edit account profile and settings
+RESPI – Responsive Event Scheduling and Planning Interface
 
-### 🛡️ Admin Features:
-- Admin login dashboard
-- View all registered users and vendor accounts
-- Approve or reject bookings
-- Create, update, or delete events
-- Manage vendor listings and event hall details
-- Track system-wide analytics and reports
+Project Description:
+The Event Management System is a desktop-based application developed using Java 17, designed to simplify the coordination and management of event halls, schedules, and user bookings.
 
----
+This system uses Java Swing for building an interactive graphical user interface, MySQL for data storage, and JDBC for database connectivity. A key feature of this application is the integration of RESPI (Responsive Event Scheduling and Planning Interface), a custom interface developed to enhance scheduling, planning, and user interaction with event slots and bookings.
 
-## 🛠️ Tech Stack
+Key Modules and Features:
+1. Authentication Module:
+Login and Sign-up functionality for Admins and Users.
 
-| Layer       | Technology       |
-|-------------|------------------|
-| Frontend    | HTML, CSS, JS    |
-| Backend     | Java (Spring Boot / Servlet) |
-| Database    | MySQL            |
-| IDE         | IntelliJ / Eclipse / VS Code |
-| Build Tool  | Maven / Gradle   |
-| Server      | Apache Tomcat (if used) |
+Role-based access control and dashboard navigation.
 
----
+2. Admin Panel:
+Add, update, and delete event halls and event listings.
 
-## 🔐 Authentication
+View and manage all bookings submitted by users.
 
-- Login credentials are validated using email and password
-- Sessions are used to track logged-in users
-- Admins and Users are separated by `role` in the database
+Approve or reject event booking requests.
 
----
+Access dashboard analytics for event statistics.
 
-### `api_endpoints`:
-- path: /login
-  method: POST
-  description: Authenticates users/admins/subadmins
+Export data to PDF or Excel files.
 
-- path: /register
-  method: POST
-  description: Registers a new user
+Use of RESPI interface for real-time event slot visualization and schedule control.
 
-- path: /admin/events
-  method: GET/POST/DELETE
-  description: Admin management of event halls
+3. User Panel:
+Search and filter available event halls by date, location, or capacity.
 
-- path: /user/bookings
-  method: GET/POST
-  description: Booking endpoints for users
+Book an event slot using a visual scheduler (RESPI).
 
-authors:
-- name: Tharun CR
-  email: crtharun20@gmail.com
-  role: Developer
+View and manage current and past bookings.
 
-license: MIT
+Receive email confirmation after booking approval.
 
-🙋‍♂️ Developer
-Tharun C R
-📧 crtharun20@gmail.com
-📱 +91 7200098886
+4. RESPI – Responsive Event Scheduling and Planning Interface:
+Displays event schedules on a visual calendar or grid layout.
 
-📄 License
-This project is open-source under the MIT License.
+Allows users to select available time slots efficiently.
 
----
+Highlights conflicts or overlapping bookings.
 
+Helps admins plan and allocate event slots more intuitively.
 
+5. Reporting and Data Visualization:
+Generate reports showing booking statistics, usage trends, and user activity.
 
+Export reports as PDF or Excel.
 
+Color-coded scheduling visualization through RESPI for easier tracking.
 
+6. Notifications:
+Automated email alerts for:
+
+Booking confirmations
+
+Admin responses
+
+Event reminders or cancellations
+
+Database Design:
+MySQL is used to store and manage data with tables such as:
+
+users
+
+admins
+
+events
+
+bookings
+
+event_halls
+
+notifications
+
+The database is normalized and connected through foreign key constraints to maintain data integrity.
+
+Conclusion:
+The Event Management System is a feature-rich desktop application that demonstrates proficiency in software development using Java 17. With the addition of the RESPI interface, it not only manages backend logic and database operations effectively but also focuses on improving user experience through intuitive scheduling and planning features.
