@@ -17,6 +17,7 @@ import com.app.demo.model.User;
 public interface UserRepo extends JpaRepository<User, Integer> {
 	
 	public User findByEmail(String email);
+
 	
 	public User findByResetPasswordToken(String token);
 	

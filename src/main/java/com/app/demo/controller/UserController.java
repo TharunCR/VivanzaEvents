@@ -87,27 +87,6 @@ public class UserController {
 	@Value("${app.twillio.toPhoneNo}")
 	private String to;
 
-	     
-//	@GetMapping("/sendSms")
-//	public String sendSms() {
-//		
-//		String body = "Hello. Saairam This is ganapathy blah blah!!";
-//		twillioService.sendSms(to, from, body);
-//		return "message sent successfully";
-//		
-//		
-//	}
-	
-	
-//	@GetMapping("/makeCall")
-//	public String makeVoiceCall() {
-//		
-//		twillioService.makeCall(from, to);
-//		return "call initiated..";
-//		
-//		
-//	}
-//	
 	
 	@RequestMapping(value="/registerForm",method= RequestMethod.POST)
 	public String UserRegister(@ModelAttribute("registerForm") User user,Model model)

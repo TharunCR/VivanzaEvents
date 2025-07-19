@@ -1,4 +1,5 @@
 getPagination('#table-id');
+getPagination('#table-id');
 					//getPagination('.table-class');
 					//getPagination('table');
 

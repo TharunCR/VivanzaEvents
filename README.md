@@ -94,10 +94,5 @@ Java 17 was chosen for its Long-Term Support (LTS) and modern features:
 
 ---
 
-## Author
 
-**Tharun C R**   
-Email: crtharun20@gmail.com  
-
----
 

@@ -86,7 +86,7 @@ public class AdminController {
 	//User Table
 	@RequestMapping(value="/adminuserdetails",method=RequestMethod.GET)
 	public String adminUserDetails(ModelMap model) {
-//		String keyword="gana";
+
 		List<User> user=userservice.findAll();
 		model.addAttribute("Userlist",user);
 	    return "AdminUserDetails";  
